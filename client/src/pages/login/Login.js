@@ -12,8 +12,6 @@ import { connect } from 'react-redux';
 import { register, login, loadUser } from '../../actions/authActions';
 import PropTypes from 'prop-types';
 
-//import logo from './logo.jpeg';
-
 // styles
 import useStyles from './styles';
 
@@ -87,7 +85,7 @@ const Login = ({
                                 variant="h1"
                                 className={classes.greeting}
                             >
-                                Welcome to Financify
+                                Welcome to FinanceTech
                             </Typography>
                             <Button
                                 size="large"

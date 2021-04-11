@@ -1,5 +1,5 @@
 {
-    "name": "financify",
+    "name": "FinanceTech",
     "version": "1.0.0",
     "description": "A personal finance application that integrates with Canadian banks.",
     "main": "server.js",
