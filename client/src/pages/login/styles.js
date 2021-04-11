@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/styles';
-import logo from './logo.jpeg';
+import logo from './logo.jpg';
 
 export default makeStyles(theme => ({
     container: {
@@ -10,7 +10,7 @@ export default makeStyles(theme => ({
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundColor: 'grey',
-        height: '100%',
+        height: '90%',
         width: '50%',
         flexDirection: 'column',
         justifyContent: 'center',
