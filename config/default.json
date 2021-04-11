@@ -1,0 +1,4 @@
+{
+    "mongoURI": "mongodb+srv://coursehack:course@cluster0.kodex.mongodb.net/fintech",
+    "jwtSecret": "secretKey"
+}
