@@ -269,7 +269,7 @@ const Login = ({
                     )}
                 </div>
                 <Typography color="primary" className={classes.copyright}>
-                    © 2021 Team Pied Piper. All rights reserved.
+                    © 2021 Team Pied Piper.
                 </Typography>
             </Box>
         </Grid>
