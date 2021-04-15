@@ -114,8 +114,12 @@ function Dashboard({
         async function fetchTransactions() {
             await getTransactions({ userId: auth.user._id });
         }
+        //console.log('accountsLoading: ',plaid.accountsLoading)
+        //console.log('accounts: ',plaid.accounts)
+        if (plaid.accounts==null || plaid.accounts==[]){
+            fetchTransactions();
+        }
 
-        fetchTransactions();
     }, [plaid.accounts]);
 
     const getMonthlyTransactionTotal = transactions => {
@@ -168,7 +172,7 @@ function Dashboard({
         <>
             <PageTitle title="Dashboard" />
             <Grid container spacing={3} className={classes.contentMargin}>
-                {!plaid.accountsLoading && plaid.accounts.length == 0 ? (
+                {(plaid.accountsLoading==false) && plaid.accounts.length == 0 ? (
                     <Grid container justify="center" align="center">
                         <PlaidLinkButton
                             plaidLinkProps={{

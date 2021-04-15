@@ -47,6 +47,12 @@ const structure = [
         link: '/app/budgets',
         icon: <AttachMoneyIcon />
     },
+    {
+        id: 12,
+        label: 'Status',
+        link: '/calculator',
+        icon: <TransactionsIcon />
+    },
     { id: 3, type: 'divider' },
     {
         id: 4,

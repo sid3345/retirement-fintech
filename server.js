@@ -1,5 +1,6 @@
 const express = require('express');
 const connectDB = require('./config/db');
+const volleyball = require("volleyball");
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use('/api/users', require('./routes/api/users'));
 app.use('/api/profile', require('./routes/api/profile'));
 app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/plaid', require('./routes/api/plaid'));
+app.use(volleyball);
 
 const PORT = process.env.PORT || 5000;
 

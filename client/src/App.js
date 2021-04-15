@@ -4,6 +4,8 @@ import Landing from './pages/landing/Landing';
 import Login from './pages/login/Login';
 import PrivateRoute from './components/routing/PrivateRoute';
 import Layout from './components/layout/Layout';
+import CalculatorContainer from "../src/containers/calculator-container";
+import Navbar from "./elements/navbar";
 
 // Redux
 import { Provider } from 'react-redux';
@@ -33,6 +35,8 @@ const App = () => {
                         path="/register"
                         render={props => <Login {...props} tab={1} />}
                     />
+                    <Navbar />
+                    <Route path="/calculator" component={CalculatorContainer}></Route>
                 </Switch>
             </Router>
         </Provider>

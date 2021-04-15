@@ -35,7 +35,8 @@
         "redux-devtools-extension": "^2.13.8",
         "redux-thunk": "^2.3.0",
         "request": "^2.88.0",
-        "tinycolor2": "^1.4.1"
+        "tinycolor2": "^1.4.1",
+        "volleyball": "^1.5.1"
     },
     "devDependencies": {
         "concurrently": "^5.0.1",
