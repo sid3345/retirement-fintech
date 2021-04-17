@@ -176,7 +176,7 @@ function Dashboard({
                     <Grid container justify="center" align="center">
                         <PlaidLinkButton
                             plaidLinkProps={{
-                                clientName: 'FinanceTech',
+                                clientName: 'Financify',
                                 key: '4dbff516a54a26c92da118c1dfe2ba',
                                 env: 'sandbox',
                                 product: ['transactions'],
