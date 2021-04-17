@@ -74,6 +74,9 @@ typings/
 
 # FuseBox cache
 .fusebox/
+<<<<<<< HEAD
 package-lock.json
 client/package-lock.json
 package-lock.json
+=======
+>>>>>>> parent of 5c57c89 (major update)
