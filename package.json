@@ -9,8 +9,7 @@
         "client": "npm start --prefix client",
         "dev": "concurrently \"npm run server\" \"npm run client\""
     },
-    "author": "Jacob Godin",
-    "license": "MIT",
+    "author": "Sid",
     "dependencies": {
         "@material-ui/core": "^4.8.0",
         "axios": "^0.21.1",
