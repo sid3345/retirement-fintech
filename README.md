@@ -2,6 +2,33 @@
 
 This is a personal finance application that allows users to link their bank account via the Plaid API. Current functionality includes basic authentication via JSON Web Token, and the addition, deletion, and refreshing of a bank account. The application will display the user's account balances and transactions. Note that this project is a work in progress - more features are planned to be implemented in the future.
 
+## PROBLEM STATEMENT
+So, presently, do people plan their retirements considering all the factors ?
+
+To plan your retirement corpus, large number of factors must be considered, for eg: your current salary, expenses, current savings, your assets, liabilities, investments, etc. Apart from this, global factors such as inflation rates, location based expenses (cheap vs expensive city), stock market conditions, etc, should also be considered to evaluate what should be your retirement corpus.
+
+But currently, there is no solution to provide complete picture of your retirement corpus / savings, that would be sufficient for you to live a comfortable retired life.
+
+## PROPOSED SOLUTION
+Thus, my solution is to use technology (web, data analytics, etc) to create an application that takes into consideration user’s current financial status such as assets, liabilities, investments, etc, and global factors (inflation, location specific lifestyle, stock markets, etc) to model user’s future retirements needs and what, when, and how current savings can lead to future retirement corpus.
+
+Data points are collected through API’s and modelled to create an output and displayed in chart for easy understanding.
+
+## TECH STACK
+MERN stack:
+- MongoDB (Database)
+- Express
+- ReactJS (FrontEnd)
+- NodeJS (BackEnd)
+
+D3 JS (chart visualization)
+
+Material UI
+
+API’s (Plaid, Numbeo)
+
+PPT is uploaded in the repo.
+
 ## Setup
 
 1. `git clone https://github.com/jagodin/personal-finance-app`
