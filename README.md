@@ -14,19 +14,6 @@ Thus, my solution is to use technology (web, data analytics, etc) to create an a
 
 Data points are collected through API’s and modelled to create an output and displayed in chart for easy understanding.
 
-## TECH STACK
-MERN stack:
-- MongoDB (Database)
-- Express
-- ReactJS (FrontEnd)
-- NodeJS (BackEnd)
-
-D3 JS (chart visualization)
-
-Material UI
-
-API’s (Plaid, Numbeo)
-
 PPT is uploaded in the repo.
 
 ## Setup
@@ -64,6 +51,7 @@ Configure `./config/default.json`
 4. Redux Thunk
 5. Bcrypt.js
 6. Mongoose
+7. D3 JS
 
 ## Screenshots
 
