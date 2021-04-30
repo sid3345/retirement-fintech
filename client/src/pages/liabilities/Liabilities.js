@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import getSymbolFromCurrency from 'currency-symbol-map';
 
-import { getTransactions, getAccounts } from '../../actions/accountActions';
+import { getLiabilities, getAccounts } from '../../actions/accountActions';
 
 // components
 import PageTitle from '../../components/pagetitle/PageTitle';
@@ -15,14 +15,14 @@ import WidgetItem from '../../components/widget-item/WidgetItem';
 // styles
 import makeStyles from './styles';
 
-function Transactions({
-    getTransactions,
+function Liabilities({
+    getLiabilities,
     auth,
-    transactions,
+    liabilities,
     getAccounts,
     plaid
 }) {
-    console.log('transactions: ',transactions);
+    console.log('liabilities: ',liabilities);
 
     const classes = makeStyles();
 
@@ -35,23 +35,25 @@ function Transactions({
         fetchAccounts();
     }, []);
 
-    // Get transactions on state.plaid.accounts change
+    // Get liabilities on state.plaid.accounts change
     useEffect(() => {
-        async function fetchTransactions() {
-            await getTransactions({ userId: auth.user._id });
+        async function fetchLiabilities() {
+            await getLiabilities({ userId: auth.user._id });
         }
 
-        fetchTransactions();
+        fetchLiabilities();
     }, [plaid.accounts]);
+
+    console.log('liabilities: ',liabilities)
 
     return (
         <>
             <Grid container justify="space-between" className={classes.header}>
-                <PageTitle title="Transactions" />
+                <PageTitle title="Liabilities" />
             </Grid>
             <Grid container spacing={3}>
-                {transactions.transactions.length != 0 ? (
-                    transactions.transactions.map(institution => (
+                {liabilities.liabilities.length != 0 ? (
+                    liabilities.liabilities.map(institution => (
                         <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
                             <Widget
                                 //id={institution._id}
@@ -64,35 +66,19 @@ function Transactions({
                                         className={classes.accountsDivider}
                                     />
                                     <List>
-                                        {institution.transactions.map(
-                                            transaction => (
+                                        {institution.liabilities.map(
+                                            liabilities => (
                                                 <>
+                                                {liabilities.map(type => (
                                                     <WidgetItem
                                                         //key={transaction.account_id}
-                                                        title={transaction.name}
-                                                        label={transaction.category.map(
-                                                            (item, i) => {
-                                                                if (
-                                                                    transaction
-                                                                        .category
-                                                                        .length ===
-                                                                    i + 1
-                                                                ) {
-                                                                    return item;
-                                                                } else {
-                                                                    return (
-                                                                        item +
-                                                                        ' / '
-                                                                    );
-                                                                }
-                                                            }
-                                                        )}
-                                                        date={transaction.date}
-                                                        value={`${getSymbolFromCurrency(
-                                                            transaction.iso_currency_code
-                                                        )} ${transaction.amount.toLocaleString()}`}
-                                                        {...transaction}
+                                                        title={type}
+                                                        label={''}
+                                                        date={type.last_payment_date}
+                                                        value={`${type.last_statement_balance.toLocaleString()}`}
+                                                        {...liabilities}
                                                     />
+                                                ))}
                                                 </>
                                             )
                                         )}
@@ -115,11 +101,11 @@ function Transactions({
 
 const mapStateToProps = state => ({
     plaid: state.plaid,
-    transactions: state.transactions,
-    auth: state.auth
+    liabilities: state.liabilities,
+    auth: state.auth,
 });
 
 export default connect(mapStateToProps, {
-    getTransactions,
+    getLiabilities,
     getAccounts
-})(Transactions);
+})(Liabilities);

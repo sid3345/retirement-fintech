@@ -12,7 +12,6 @@ import { connect } from "react-redux";
 import { register, login, loadUser } from "../../actions/authActions";
 import PropTypes from "prop-types";
 
-import logo from "./logo.jpeg";
 
 // styles
 import useStyles from "./styles";
@@ -243,7 +242,7 @@ const Login = ({
           )}
         </div>
         <Typography color="primary" className={classes.copyright}>
-          © 2021 Team Pied Piper.
+          © 2021 Team Inn0v8.
         </Typography>
       </Box>
     </Grid>

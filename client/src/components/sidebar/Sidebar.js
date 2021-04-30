@@ -43,12 +43,18 @@ const structure = [
     },
     {
         id: 11,
-        label: 'Budgets',
-        link: '/app/budgets',
+        label: 'Liabilities',
+        link: '/app/liabilities',
+        icon: <AttachMoneyIcon />
+    },
+    {
+        id: 12,
+        label: 'Calculate',
+        link: '/app/calculate',
         icon: <AttachMoneyIcon />
     },
     { id: 3, type: 'divider' },
-    {
+    /*{
         id: 4,
         label: 'Settings',
         link: '/app/settings',
@@ -59,11 +65,11 @@ const structure = [
         label: 'My Account',
         link: '/app/account',
         icon: <AccountIcon />
-    },
+    },*/
     { id: 6, type: 'divider' },
     { id: 7, type: 'title', label: 'HELP' },
-    { id: 8, label: 'Support', link: '/app/support', icon: <SupportIcon /> },
-    { id: 9, label: 'FAQ', link: '/app/faq', icon: <FAQIcon /> }
+    //{ id: 8, label: 'Support', link: '/app/support', icon: <SupportIcon /> },
+    //{ id: 9, label: 'FAQ', link: '/app/faq', icon: <FAQIcon /> }
 ];
 
 const Sidebar = ({ location, toggleSidebar, isSidebarOpen }) => {

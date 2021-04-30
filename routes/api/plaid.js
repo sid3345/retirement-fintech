@@ -136,6 +136,46 @@ router.post('/accounts/transactions', auth, (req, res) => {
         .catch(err => console.log(err));
 });
 
+// @route POST api/plaid/accounts/liabilities
+// @desc Fetch liabilities from all linked accounts
+// @access Private
+// @req.body = { userId: 'userId' }
+router.post('/accounts/liabilities', auth, (req, res) => {
+
+    console.log('req: ', req)
+    console.log('res: ', res)
+
+    Account.find({ userId: req.body.userId })
+        .then(accounts => {
+            if (accounts) {
+                let liabilities = [];
+
+                accounts.forEach(function(account) {
+                    ACCESS_TOKEN = account.accessToken;
+                    const institutionName = account.institutionName;
+
+                    console.log('institutionName: ', institutionName);
+
+                    client
+                        .getLiabilities(ACCESS_TOKEN)
+                        .then(response => {
+                            liabilities.push({
+                                accountName: institutionName,
+                                liabilities: response.liabilities
+                            });
+                            console.log('liabilities: ', liabilities);
+
+                            if (liabilities.length === accounts.length) {
+                                res.json(liabilities);
+                            }
+                        })
+                        .catch(err => console.log(err));
+                });
+            }
+        })
+        .catch(err => console.log(err));
+});
+
 // @route POST api/plaid/accounts/balance
 // @desc Get all account balances of a user
 // @access Private

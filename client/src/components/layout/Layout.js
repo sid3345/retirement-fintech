@@ -16,11 +16,13 @@ import { Hidden } from '@material-ui/core';
 // pages
 import Dashboard from '../../pages/dashboard/Dashboard';
 import Transactions from '../../pages/transactions/Transactions';
+import Liablities from '../../pages/liabilities/Liabilities';
 import LinkedAccounts from '../../pages/linked-accounts/LinkedAccounts';
 import Settings from '../../pages/settings/Settings';
 import MyAccount from '../../pages/my-account/MyAccount';
 import Support from '../../pages/support/Support';
 import FAQ from '../../pages/faq/FAQ';
+import FormContainer from '../../chart/container/FormContainer';
 
 const Layout = () => {
     const classes = useStyles();
@@ -38,9 +40,14 @@ const Layout = () => {
                             component={Transactions}
                         />
                         <Route
+                            path="/app/liablities"
+                            component={Liablities}
+                        />
+                        <Route
                             path="/app/linked-accounts"
                             component={LinkedAccounts}
                         />
+                        <Route exact path="/app/calculate" component={FormContainer} />
                         <Route path="/app/settings" component={Settings} />
                         <Route path="/app/account" component={MyAccount} />
                         <Route path="/app/support" component={Support} />

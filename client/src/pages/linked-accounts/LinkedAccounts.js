@@ -85,7 +85,7 @@ function LinkedAccounts({
             clientName: "financialTech",
             key: "4dbff516a54a26c92da118c1dfe2ba",
             env: "sandbox",
-            product: ["transactions"],
+            product: ["transactions", 'liabilities'],
             onSuccess: handleOnSuccess,
           }}
           buttonProps={{ className: classes.plaidButton }}
