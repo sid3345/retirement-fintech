@@ -32,9 +32,6 @@ const WidgetItem = ({ title, label, value, linkTo, icon, date, ...props }) => {
                     <Grid item>
                         <Grid container>
                             <Typography variant="h6">{value}</Typography>
-                            <ListItemIcon className={classes.linkIcon}>
-                                {icon ? icon : <ArrowForwardIosIcon />}
-                            </ListItemIcon>
                         </Grid>
                     </Grid>
                 </Grid>

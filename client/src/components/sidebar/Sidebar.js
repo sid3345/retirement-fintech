@@ -7,10 +7,14 @@ import {
     QuestionAnswer as SupportIcon,
     HelpOutline as FAQIcon,
     ArrowBack as ArrowBackIcon,
-    Person as AccountIcon
+    Person as AccountIcon,
 } from '@material-ui/icons';
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import MoneyOffIcon from '@material-ui/icons/MoneyOff';
+import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
+import MoneyIcon from '@material-ui/icons/Money';
+import LocalAtmIcon from '@material-ui/icons/LocalAtm';
 
 import { useTheme } from '@material-ui/styles';
 import { withRouter } from 'react-router-dom';
@@ -36,16 +40,16 @@ const structure = [
         icon: <TransactionsIcon />
     },
     {
+        id: 11,
+        label: 'Liabilities',
+        link: '/app/liablities',
+        icon: <MoneyOffIcon />
+    },
+    {
         id: 2,
         label: 'Linked Accounts',
         link: '/app/linked-accounts',
         icon: <AccountBalanceIcon />
-    },
-    {
-        id: 11,
-        label: 'Liabilities',
-        link: '/app/liabilities',
-        icon: <AttachMoneyIcon />
     },
     {
         id: 12,

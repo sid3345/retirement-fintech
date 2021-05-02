@@ -27,7 +27,7 @@ export const addAccount = plaidData => dispatch => {
         )
         .then(data =>
             accounts
-                ? dispatch(getTransactions(accounts.concat(data.payload)), getLiabilities(accounts.concat(data.payload)))
+                ? dispatch(getLiabilities(accounts.concat(data.payload)), getTransactions(accounts.concat(data.payload)))
                 : null
         )
         .catch(err => console.log(err));
@@ -100,6 +100,7 @@ export const getTransactions = plaidData => (dispatch, getState) => {
                 type: GET_TRANSACTIONS,
                 payload: res.data
             })
+           // console.log('transaction res: ',res))
         )
         .catch(err =>
             dispatch({
@@ -132,6 +133,7 @@ export const getLiabilities = plaidData => (dispatch, getState) => {
                 type: GET_LIABILITIES,
                 payload: res.data
             })
+          //  console.log('liablities res: ',res))
         )
         .catch(err =>
             dispatch({

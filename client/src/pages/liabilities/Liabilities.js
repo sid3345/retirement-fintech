@@ -22,7 +22,7 @@ function Liabilities({
     getAccounts,
     plaid
 }) {
-    console.log('liabilities: ',liabilities);
+   console.log('liabilities: ',liabilities);
 
     const classes = makeStyles();
 
@@ -44,8 +44,6 @@ function Liabilities({
         fetchLiabilities();
     }, [plaid.accounts]);
 
-    console.log('liabilities: ',liabilities)
-
     return (
         <>
             <Grid container justify="space-between" className={classes.header}>
@@ -61,35 +59,133 @@ function Liabilities({
                                 bodyClass={classes.fullHeightBody}
                                 className={classes.card}
                             >
-                                <div>
-                                    <Divider
-                                        className={classes.accountsDivider}
+
+                            <div>
+                                <Divider
+                                    className={classes.accountsDivider}
+                                />
+                                <List>
+                                    <WidgetItem
+                                        //key={transaction.account_id}
+                                        title='Credit'
+                                        label='Last Payment Amount'
+                                        date={institution.liabilities.credit[0].last_payment_date}
+                                        value={institution.liabilities.credit[0].last_payment_amount}
+                                        {...institution.liabilities.credit[0]}
                                     />
-                                    <List>
-                                        {institution.liabilities.map(
-                                            liabilities => (
-                                                <>
-                                                {liabilities.map(type => (
-                                                    <WidgetItem
-                                                        //key={transaction.account_id}
-                                                        title={type}
-                                                        label={''}
-                                                        date={type.last_payment_date}
-                                                        value={`${type.last_statement_balance.toLocaleString()}`}
-                                                        {...liabilities}
-                                                    />
-                                                ))}
-                                                </>
-                                            )
-                                        )}
+                                    <WidgetItem
+                                        //key={transaction.account_id}
+                                        title=''
+                                        label='Last Statement Balance'
+                                        date={institution.liabilities.credit[0].last_payment_date}
+                                        value={institution.liabilities.credit[0].last_statement_balance}
+                                        {...institution.liabilities.credit[0]}
+                                    />
+                                     </List>
+                                     <List>
+                                    <WidgetItem
+                                        //key={transaction.account_id}
+                                        title='Mortgage'
+                                        label='Last Payment Amount'
+                                        date={institution.liabilities.mortgage[0].last_payment_date}
+                                        value={institution.liabilities.mortgage[0].last_payment_amount}
+                                        {...institution.liabilities.mortgage[0]}
+                                    />
+                                    <WidgetItem
+                                        //key={transaction.account_id}
+                                        title=''
+                                        label='Origination Principal Amount'
+                                        date={institution.liabilities.mortgage[0].origination_date}
+                                        value={institution.liabilities.mortgage[0].origination_principal_amount}
+                                        {...institution.liabilities.mortgage[0]}
+                                    />
+                                    <WidgetItem
+                                        //key={transaction.account_id}
+                                        title=''
+                                        label='YTD Interest Paid'
+                                        value={institution.liabilities.mortgage[0].ytd_interest_paid}
+                                        {...institution.liabilities.mortgage[0]}
+                                    />
+                                    <WidgetItem
+                                        //key={transaction.account_id}
+                                        title=''
+                                        label='YTD Principal Paid'
+                                        value={institution.liabilities.mortgage[0].ytd_principal_paid}
+                                        {...institution.liabilities.mortgage[0]}
+                                    />
+                                    <WidgetItem
+                                        //key={transaction.account_id}
+                                        title=''
+                                        label='Past Due Amount'
+                                        date={institution.liabilities.mortgage[0].last_payment_date}
+                                        value={institution.liabilities.mortgage[0].past_due_amount}
+                                        {...institution.liabilities.mortgage[0]}
+                                    />
+                                    <WidgetItem
+                                        //key={transaction.account_id}
+                                        title=''
+                                        label='Maturity Date / Loan term'
+                                        date={institution.liabilities.mortgage[0].maturity_date}
+                                        value={institution.liabilities.mortgage[0].loan_term}
+                                        {...institution.liabilities.mortgage[0]}
+                                    />
+                                     </List>
+
+                                     <List>
+                                   <WidgetItem
+                                        //key={transaction.account_id}
+                                        title='Student Loans'
+                                        label='Last Payment Amount'
+                                        date={institution.liabilities.student[0].last_payment_date}
+                                        value={institution.liabilities.student[0].last_payment_amount}
+                                        {...institution.liabilities.student[0]}
+                                    />
+                                    <WidgetItem
+                                        //key={transaction.account_id}
+                                        title=''
+                                        label='Last Statement Balance'
+                                        date={institution.liabilities.student[0].last_statement_issue_date}
+                                        value={institution.liabilities.student[0].last_statement_balance}
+                                        {...institution.liabilities.student[0]}
+                                    />
+                                    <WidgetItem
+                                        //key={transaction.account_id}
+                                        title=''
+                                        label='Origination Principal Amount'
+                                        date={institution.liabilities.student[0].origination_date}
+                                        value={institution.liabilities.student[0].origination_principal_amount}
+                                        {...institution.liabilities.student[0]}
+                                    />
+                                    <WidgetItem
+                                        //key={transaction.account_id}
+                                        title=''
+                                        label='YTD Interest Paid'
+                                        value={institution.liabilities.student[0].ytd_interest_paid}
+                                        {...institution.liabilities.student[0]}
+                                    />
+                                    <WidgetItem
+                                        //key={transaction.account_id}
+                                        title=''
+                                        label='YTD Principal Paid'
+                                        value={institution.liabilities.student[0].ytd_principal_paid}
+                                        {...institution.liabilities.student[0]}
+                                    />
+                                    <WidgetItem
+                                        //key={transaction.account_id}
+                                        title=''
+                                        label='Expected Payoff Date / Interest Rate Percentage'
+                                        date={institution.liabilities.student[0].expected_payoff_date}
+                                        value={institution.liabilities.student[0].interest_rate_percentage}
+                                        {...institution.liabilities.student[0]}
+                                    />
                                     </List>
-                                </div>
+                            </div>
                             </Widget>
                         </Grid>
                     ))
                 ) : (
                     <div style={{ width: '100%' }}>
-                        <Grid align="center" justify="center">
+                        <Grid align="center">
                             <CircularProgress />
                         </Grid>
                     </div>

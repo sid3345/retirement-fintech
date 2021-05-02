@@ -142,8 +142,6 @@ router.post('/accounts/transactions', auth, (req, res) => {
 // @req.body = { userId: 'userId' }
 router.post('/accounts/liabilities', auth, (req, res) => {
 
-    console.log('req: ', req)
-    console.log('res: ', res)
 
     Account.find({ userId: req.body.userId })
         .then(accounts => {
@@ -154,8 +152,6 @@ router.post('/accounts/liabilities', auth, (req, res) => {
                     ACCESS_TOKEN = account.accessToken;
                     const institutionName = account.institutionName;
 
-                    console.log('institutionName: ', institutionName);
-
                     client
                         .getLiabilities(ACCESS_TOKEN)
                         .then(response => {
@@ -163,7 +159,7 @@ router.post('/accounts/liabilities', auth, (req, res) => {
                                 accountName: institutionName,
                                 liabilities: response.liabilities
                             });
-                            console.log('liabilities: ', liabilities);
+                           // console.log('liabilities: ', liabilities);
 
                             if (liabilities.length === accounts.length) {
                                 res.json(liabilities);

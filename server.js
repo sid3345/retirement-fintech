@@ -21,7 +21,7 @@ app.use('/api/profile', require('./routes/api/profile'));
 app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/plaid', require('./routes/api/plaid'));
 
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
     `Server listening on port ${PORT}.`;

@@ -23,6 +23,7 @@ import moment from "moment";
 
 import {
   getTransactions,
+  getLiabilities,
   getAccounts,
   addAccount,
 } from "../../actions/accountActions";
@@ -91,6 +92,7 @@ const budgets = [
 function Dashboard({
   auth,
   getTransactions,
+  getLiabilities,
   getAccounts,
   plaid,
   transactions,
@@ -113,9 +115,13 @@ function Dashboard({
   useEffect(() => {
     async function fetchTransactions() {
       await getTransactions({ userId: auth.user._id });
+    };
+    async function fetchLiabilities() {
+      await getLiabilities({ userId: auth.user._id });
     }
 
     fetchTransactions();
+    fetchLiabilities();
   }, [plaid.accounts]);
 
   const getMonthlyTransactionTotal = (transactions) => {
@@ -353,6 +359,7 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {
+  getLiabilities,
   getTransactions,
   getAccounts,
   addAccount,
