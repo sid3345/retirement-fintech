@@ -6,6 +6,7 @@ import accountReducer from './accountReducer';
 import balanceReducer from './balanceReducer';
 import transactionsReducer from './transactionsReducer';
 import liabilitiesReducer from './liabilitiesReducer';
+import investmentsReducer from './investmentsReducer';
 
 export default combineReducers({
     auth: authReducer,
@@ -14,5 +15,6 @@ export default combineReducers({
     plaid: accountReducer,
     balance: balanceReducer,
     transactions: transactionsReducer,
-    liabilities: liabilitiesReducer
+    liabilities: liabilitiesReducer,
+    investments: investmentsReducer
 });

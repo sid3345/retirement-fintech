@@ -11,7 +11,9 @@ import {
     UPDATE_BALANCE,
     BALANCES_LOADING,
     GET_LIABILITIES,
-    LIABILITIES_LOADING
+    LIABILITIES_LOADING,
+    GET_INVESTMENTS,
+    INVESTMENTS_LOADING
 } from './types';
 
 // Add account
@@ -27,7 +29,7 @@ export const addAccount = plaidData => dispatch => {
         )
         .then(data =>
             accounts
-                ? dispatch(getLiabilities(accounts.concat(data.payload)), getTransactions(accounts.concat(data.payload)))
+                ? dispatch(getLiabilities(accounts.concat(data.payload)), getInvestments(accounts.concat(data.payload)), getTransactions(accounts.concat(data.payload)))
                 : null
         )
         .catch(err => console.log(err));
@@ -143,10 +145,44 @@ export const getLiabilities = plaidData => (dispatch, getState) => {
         );
 };
 
-// Liabilities loading
+// Liablities loading
 export const setLiabilitiesLoading = () => {
     return {
         type: LIABILITIES_LOADING
+    };
+};
+
+
+// Get Investments
+export const getInvestments = plaidData => (dispatch, getState) => {
+    // const isCacheValid = checkCacheValid(getState, 'liabilities');
+    // if (isCacheValid) {
+    //     return null;
+    // }
+
+    dispatch(setInvestmentsLoading());
+
+    axios
+        .post('/api/plaid/accounts/investments', plaidData)
+        .then(res =>
+            dispatch({
+                type: GET_INVESTMENTS,
+                payload: res.data
+            })
+          //  console.log('investments res: ',res))
+        )
+        .catch(err =>
+            dispatch({
+                type: GET_INVESTMENTS,
+                payload: null
+            })
+        );
+};
+
+// Investments loading
+export const setInvestmentsLoading = () => {
+    return {
+        type: INVESTMENTS_LOADING
     };
 };
 

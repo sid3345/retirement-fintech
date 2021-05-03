@@ -17,6 +17,7 @@ import { Hidden } from '@material-ui/core';
 import Dashboard from '../../pages/dashboard/Dashboard';
 import Transactions from '../../pages/transactions/Transactions';
 import Liablities from '../../pages/liabilities/Liabilities';
+import Investments from '../../pages/investments/Investments';
 import LinkedAccounts from '../../pages/linked-accounts/LinkedAccounts';
 import Settings from '../../pages/settings/Settings';
 import MyAccount from '../../pages/my-account/MyAccount';
@@ -42,6 +43,10 @@ const Layout = () => {
                         <Route
                             path="/app/liablities"
                             component={Liablities}
+                        />
+                        <Route
+                            path="/app/investments"
+                            component={Investments}
                         />
                         <Route
                             path="/app/linked-accounts"

@@ -46,6 +46,12 @@ const structure = [
         icon: <MoneyOffIcon />
     },
     {
+        id: 13,
+        label: 'Investments',
+        link: '/app/investments',
+        icon: <AccountBalanceWalletIcon />
+    },
+    {
         id: 2,
         label: 'Linked Accounts',
         link: '/app/linked-accounts',

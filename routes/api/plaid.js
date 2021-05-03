@@ -172,6 +172,45 @@ router.post('/accounts/liabilities', auth, (req, res) => {
         .catch(err => console.log(err));
 });
 
+
+// @route POST api/plaid/accounts/investments
+// @desc Fetch investments from all linked accounts
+// @access Private
+// @req.body = { userId: 'userId' }
+router.post('/accounts/investments', auth, (req, res) => {
+     const now = moment();
+    const today = now.format('YYYY-MM-DD');
+    const sixtyDaysAgo = now.subtract(60, 'days').format('YYYY-MM-DD');
+
+    Account.find({ userId: req.body.userId })
+        .then(accounts => {
+            if (accounts) {
+                let investments = [];
+
+                accounts.forEach(function(account) {
+                    ACCESS_TOKEN = account.accessToken;
+                    const institutionName = account.institutionName;
+
+                    client
+                        .getInvestmentTransactions(ACCESS_TOKEN, sixtyDaysAgo, today)
+                        .then(response => {
+                            investments.push({
+                                accountName: institutionName,
+                                investments: response.getInvestmentTransactions
+                            });
+                            //console.log('investments plaid: ', investments);
+
+                            if (investments.length === accounts.length) {
+                                res.json(investments);
+                            }
+                        })
+                        .catch(err => console.log(err));
+                });
+            }
+        })
+        .catch(err => console.log(err));
+});
+
 // @route POST api/plaid/accounts/balance
 // @desc Get all account balances of a user
 // @access Private
